@@ -1,9 +1,16 @@
 (function () {
   const config = window.FightPassConfig || {};
-  const API_BASE_URL = localStorage.getItem("fightpass.apiBaseUrl") || config.apiBaseUrl || "http://localhost:3000/api";
+  const isLocalHost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+  const API_BASE_URL = normalizeApiBaseUrl(
+    localStorage.getItem("fightpass.apiBaseUrl") || config.apiBaseUrl || (isLocalHost ? "http://localhost:3000/api" : "")
+  );
   const TOKEN_KEY = "fightpass.token";
   const USER_KEY = "fightpass.user";
   const FLASH_KEY = "fightpass.flash";
+
+  function normalizeApiBaseUrl(value) {
+    return String(value || "").trim().replace(/\/+$/, "");
+  }
 
   function getToken() {
     return localStorage.getItem(TOKEN_KEY);
@@ -101,6 +108,10 @@
   }
 
   async function request(path, options = {}) {
+    if (!API_BASE_URL) {
+      throw new Error("API nao configurada. Defina FIGHTPASS_API_BASE_URL na Vercel e faca um novo deploy.");
+    }
+
     const headers = new Headers(options.headers || {});
     const body = options.body;
 

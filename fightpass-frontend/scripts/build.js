@@ -48,7 +48,13 @@ function writeRuntimeConfig() {
   fs.writeFileSync(path.join(distDir, "js", "config.js"), config);
 
   if (!apiBaseUrl) {
-    console.warn("FIGHTPASS_API_BASE_URL nao definida. O frontend usara http://localhost:3000/api.");
+    const message = "FIGHTPASS_API_BASE_URL nao definida. Configure a URL publica da API terminando em /api.";
+
+    if (process.env.VERCEL) {
+      throw new Error(message);
+    }
+
+    console.warn(`${message} O frontend local usara http://localhost:3000/api.`);
   }
 }
 
