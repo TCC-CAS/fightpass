@@ -1,0 +1,11 @@
+{
+  "name": "tcc-2025-1-e-2-fightpass",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix fightpass-frontend run build"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
