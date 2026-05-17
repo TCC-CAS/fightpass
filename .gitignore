@@ -1,6 +1,7 @@
 node_modules/
 fightpass-backend/node_modules/
 fightpass-backend/.env
+fightpass-frontend/dist/
 .env
 *.log
 /package-lock.json

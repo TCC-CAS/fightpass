@@ -100,6 +100,8 @@ O frontend consome a API em `http://localhost:3000/api`
 localStorage.setItem("fightpass.apiBaseUrl", "http://localhost:3000/api")
 ```
 
+Para deploy, use a pasta `fightpass-frontend` como raiz do projeto na Vercel ou Netlify, configure a variavel `FIGHTPASS_API_BASE_URL` com a URL publica do backend no Railway terminando em `/api`, e publique o diretorio `dist` gerado por `npm run build`.
+
 ## Usuários de demonstração
 
 Todos usam a senha `FightPass123` após executar o seed.

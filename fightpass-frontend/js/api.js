@@ -1,5 +1,6 @@
 (function () {
-  const API_BASE_URL = localStorage.getItem("fightpass.apiBaseUrl") || "http://localhost:3000/api";
+  const config = window.FightPassConfig || {};
+  const API_BASE_URL = localStorage.getItem("fightpass.apiBaseUrl") || config.apiBaseUrl || "http://localhost:3000/api";
   const TOKEN_KEY = "fightpass.token";
   const USER_KEY = "fightpass.user";
   const FLASH_KEY = "fightpass.flash";

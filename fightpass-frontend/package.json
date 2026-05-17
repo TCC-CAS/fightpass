@@ -1,0 +1,12 @@
+{
+  "name": "fightpass-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend estatico do FightPass.",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
